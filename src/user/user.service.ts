@@ -76,8 +76,6 @@ export class UserService {
   }
 
   async login(loginDto: LoginDto) {
-    console.log(loginDto);
-
     const findUser = await this.userModel.findOne({
       username: loginDto.username,
     });
@@ -165,21 +163,9 @@ export class UserService {
     return vo;
   }
 
-  async findOneById(userId: number) {
-    const user = await this.userModel.findOne({
-      id: userId,
-    });
-
-    return {
-      id: user.id,
-      username: user.username,
-      email: user.email,
-      phoneNumber: user.phoneNumber,
-      avatar: user.avatar,
-    };
-  }
-
   async sendRegisterCode(receiver: string, type: UserType) {
+    console.log(receiver, type, 'xxx');
+
     if (!receiver) {
       throw new HttpException('请输入邮箱或手机号', HttpStatus.BAD_REQUEST);
     }

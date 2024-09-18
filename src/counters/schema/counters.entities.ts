@@ -4,7 +4,7 @@ import { HydratedDocument } from 'mongoose';
 @Schema()
 export class Counters {
   @Prop({ required: true, unique: true })
-  collection: string;
+  collections: string;
 
   @Prop({ required: true })
   seq_value: number;

@@ -106,14 +106,14 @@ export class WorkController {
     };
 
     const templatePath =
-      'D:\\前端项目\\vue-project\\editor-backend\\views\\index.html';
+      'D:\\myCode\\myProgram\\低代码\\editor-backend-copy\\editor-backend\\views\\index.html';
 
     const templateContent = await fs.promises.readFile(templatePath, 'utf8');
 
     const page = ejs.render(templateContent, { ...renderData });
 
     fs.writeFileSync(
-      'D:\\前端项目\\vue-project\\editor-backend\\public\\index.html',
+      'D:\\myCode\\myProgram\\低代码\\editor-backend-copy\\editor-backend\\public\\index.html',
       page,
     );
     const ssrUrl = await this.minioService.uploadFile();

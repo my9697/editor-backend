@@ -11,7 +11,7 @@ export class MinioService {
   private ConfigService: ConfigService;
 
   async uploadFile(
-    path = 'D:\\前端项目\\vue-project\\editor-backend\\public\\index.html',
+    path = 'D:\\myCode\\myProgram\\低代码\\editor-backend-copy\\editor-backend\\public\\index.html',
     bucketName = 'editor-ssr',
     objectName = 'index.html',
   ) {

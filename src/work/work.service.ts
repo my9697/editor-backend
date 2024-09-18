@@ -15,6 +15,7 @@ import { RenderQueryDto } from './dto/render-query.dto';
 import { renderToString } from 'vue/server-renderer';
 import { TextComp } from 'editor-components-sw';
 import { formatStyle, pxTovw } from './utils';
+import * as path from 'path';
 
 @Injectable()
 export class WorkService {
@@ -31,15 +32,18 @@ export class WorkService {
     const { _id, username } = userInfo;
 
     const uuid = nanoid(6);
+    console.log('uuid', uuid);
 
     createWorkDto.id = await this.countersService.getNextSequenceValue('works');
 
     const newWork = {
+      ...createWorkDto,
       uuid,
       author: username,
       user: new Types.ObjectId(_id),
-      ...createWorkDto,
     };
+
+    console.log(newWork);
 
     return await this.workModel.create(newWork);
   }
@@ -196,6 +200,8 @@ export class WorkService {
     vueApp.component('TextComp', TextComp);
     const html = await renderToString(vueApp);
     const bodyStyle = formatStyle(content && content.props);
+
+    // console.log(path.join(__dirname, '..', 'views', 'index.html'));
 
     return { html, bodyStyle, title, desc };
   }
