@@ -260,4 +260,17 @@ export class UserService {
           { $set: { email: receiver, type: 'all' } },
         );
   }
+
+  async findOneById(userId: number) {
+    const user = await this.userModel.findOne({
+      id: userId,
+    });
+    return {
+      id: user.id,
+      username: user.username,
+      email: user.email,
+      phoneNumber: user.phoneNumber,
+      avatar: user.avatar,
+    };
+  }
 }

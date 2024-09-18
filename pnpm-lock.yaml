@@ -126,9 +126,6 @@ importers:
       eslint:
         specifier: ^8.42.0
         version: 8.57.1
-      eslint-config-prettier:
-        specifier: ^9.0.0
-        version: 9.1.0(eslint@8.57.1)
       eslint-plugin-prettier:
         specifier: ^5.0.0
         version: 5.2.1(eslint-config-prettier@9.1.0(eslint@8.57.1))(eslint@8.57.1)(prettier@3.3.3)
@@ -5722,6 +5719,7 @@ snapshots:
   eslint-config-prettier@9.1.0(eslint@8.57.1):
     dependencies:
       eslint: 8.57.1
+    optional: true
 
   eslint-plugin-prettier@5.2.1(eslint-config-prettier@9.1.0(eslint@8.57.1))(eslint@8.57.1)(prettier@3.3.3):
     dependencies:

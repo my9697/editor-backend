@@ -16,6 +16,11 @@ import { UserType } from './types';
 
 @Controller('user')
 export class UserController {
+  @Inject(JwtService)
+  private jwtService: JwtService;
+  @Inject(ConfigService)
+  private configService: ConfigService;
+
   constructor(private readonly userService: UserService) {}
 
   @Inject(JwtService)
