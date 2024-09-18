@@ -2,8 +2,8 @@ import { IsNotEmpty, IsString } from 'class-validator';
 import { UserType } from '../types';
 
 export class LoginDto {
-  @IsString()
-  @IsNotEmpty({ message: '用户名不能为空' })
+  // @IsString()
+  // @IsNotEmpty({ message: '用户名不能为空' })
   username: string;
 
   password: string;

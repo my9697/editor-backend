@@ -38,6 +38,9 @@ export class User {
 
   @Prop(Date)
   updateTime: Date;
+
+  @Prop({ type: String })
+  role?: 'admin' | 'normal';
 }
 
 export type UserDocument = HydratedDocument<User>;

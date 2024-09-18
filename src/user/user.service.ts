@@ -76,6 +76,8 @@ export class UserService {
   }
 
   async login(loginDto: LoginDto) {
+    console.log(loginDto);
+
     const findUser = await this.userModel.findOne({
       username: loginDto.username,
     });

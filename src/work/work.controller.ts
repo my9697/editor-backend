@@ -31,6 +31,18 @@ export class WorkController {
     return await this.workService.createWork(createWorkDto, userInfo);
   }
 
+  @Post('create-channels')
+  @RequireLogin()
+  async createChannels(@Body() name: string, @Body() workId: string) {
+    return await this.workService.createChannels(name, workId);
+  }
+
+  @Get('get-channels')
+  @RequireLogin()
+  async getChannels(@Query('id') id: string) {
+    return await this.workService.getChannels(id);
+  }
+
   @Get('work-list')
   @RequireLogin()
   async workList(

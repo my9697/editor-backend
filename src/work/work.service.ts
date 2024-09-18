@@ -16,7 +16,6 @@ import { renderToString } from 'vue/server-renderer';
 import { TextComp } from 'editor-components-sw';
 import { formatStyle, pxTovw } from './utils';
 
-
 @Injectable()
 export class WorkService {
   @InjectModel(Work.name)
@@ -43,6 +42,24 @@ export class WorkService {
     };
 
     return await this.workModel.create(newWork);
+  }
+
+  async createChannels(name: string, workId: string) {
+    const newChannels = {
+      name,
+      id: nanoid(6),
+    };
+    await this.workModel.findByIdAndUpdate(
+      workId,
+      { $push: { channels: { $each: newChannels } } },
+      { new: true },
+    );
+    return newChannels;
+  }
+
+  async getChannels(id: string) {
+    const { channels } = await this.workModel.findOne({ id });
+    return { count: channels.length, list: channels };
   }
 
   async workList(userInfo: UserInfoType, queryListDto: QueryListDto) {

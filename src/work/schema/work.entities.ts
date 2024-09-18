@@ -2,6 +2,11 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument, Types } from 'mongoose';
 import { StatusType } from '../types';
 
+export interface ChannelsType {
+  name: string;
+  id: string;
+}
+
 @Schema({
   timestamps: true,
   toJSON: {
@@ -58,6 +63,9 @@ export class Work {
 
   @Prop(Date)
   updateTime: Date;
+
+  @Prop({ required: false, type: Array<Object> })
+  channels: ChannelsType[];
 }
 
 export type WorkDocument = HydratedDocument<Work>;
