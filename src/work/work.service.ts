@@ -187,8 +187,6 @@ export class WorkService {
       data: () => {
         return {
           components: (content && content.components) || [],
-          title,
-          desc,
         };
       },
       template: `<div v-for="component in components" :key="component.name">
@@ -199,6 +197,6 @@ export class WorkService {
     const html = await renderToString(vueApp);
     const bodyStyle = formatStyle(content && content.props);
 
-    return { html, bodyStyle };
+    return { html, bodyStyle, title, desc };
   }
 }
